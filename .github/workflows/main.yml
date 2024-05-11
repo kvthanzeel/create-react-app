@@ -1,0 +1,30 @@
+name: React Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # Choose your desired Node.js version
+
+    - name: Install dependencies
+      run: npm install  # or 'yarn install' if you're using Yarn
+
+    - name: Build
+      run: npm run build  # or 'yarn build' if you're using Yarn
+
+    # You can add more steps for testing, deploying, etc.
